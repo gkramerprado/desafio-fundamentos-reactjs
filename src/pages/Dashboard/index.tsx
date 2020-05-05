@@ -87,7 +87,7 @@ const Dashboard: React.FC = () => {
             </thead>
 
             <tbody>
-              {transactions ? (
+              {transactions.length > 0 ? (
                 transactions.map(transaction => (
                   <tr key={transaction.id}>
                     <td className="title">{transaction.title}</td>
