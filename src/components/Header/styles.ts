@@ -1,7 +1,8 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 interface ContainerProps {
   size?: 'small' | 'large';
+  pageFrom?: 'home' | 'import';
 }
 
 export const Container = styled.div<ContainerProps>`
@@ -17,11 +18,30 @@ export const Container = styled.div<ContainerProps>`
     justify-content: space-between;
 
     nav {
+      position: relative;
+
+      & .active-bar {
+        position: absolute;
+        width: 73px;
+        height: 2px;
+        top: 40px;
+        ${props =>
+          props.pageFrom === 'home'
+            ? css`
+                left: 0;
+              `
+            : css`
+                right: 0%;
+              `}
+        background: #ff872c;
+      }
+
       a {
         color: #fff;
         text-decoration: none;
         font-size: 16px;
         transition: opacity 0.2s;
+        position: relative;
 
         & + a {
           margin-left: 32px;
